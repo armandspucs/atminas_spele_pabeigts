@@ -15,6 +15,9 @@ let atvertsBloks2 = '';
 let bloki1 = ['b1','b2' ,'b3','b4','b6','b10'];
 let bloki2 = ['b7','b12','b5','b8','b9','b11'];
 
+let blokuSaturs = ['😀','🤡','😺','🎃','😺','🤖','😀','🎃','🤖','👽','👽','🤡'];
+
+
 
 function atvertBloku(blokaNosaukums)
 {
