@@ -9,27 +9,26 @@ document.querySelector('.virsraksts').innerHTML = 'Sveiks '+vards;
 
 let punkti = 0
 
-let atvertsBloks1 = '';
-let atvertsBloks2 = '';
+let atvertaisLaukums1 = '';
+let atvertaisLaukums2 = '';
 
-let bloki1 = ['b1','b2' ,'b3','b4','b6','b10'];
-let bloki2 = ['b7','b12','b5','b8','b9','b11'];
+let laukumuSaturs = ['😀','🤡','😺','🎃','😺','🤖','😀','🎃','🤖','👽','👽','🤡'];
 
-let blokuSaturs = ['😀','🤡','😺','🎃','😺','🤖','😀','🎃','🤖','👽','👽','🤡'];
-
+let vienadieAtvertieLaukumi = Array();
 
 
-function atvertBloku(blokaNosaukums)
+
+function atvertLaukumu(laukumaID)
 {
 	//console.log('Palaista funkcija atvertBloku()');
-	console.log('Klikšķis uz:'+blokaNosaukums);
+	console.log('Klikšķis uz:'+laukumaID);
 	
-	//console.log(document.querySelector('#'+blokaNosaukums)+' div');
-	//document.querySelector('#'+blokaNosaukums+' div').style.display='block';
+	//console.log(document.querySelector('#'+laukumaID)+' div');
+	//document.querySelector('#'+laukumaID+' div').style.display='block';
 
-	if( atvertsBloks1!='' && atvertsBloks2!='' ) //abi bloki ar atvērti
+	if( atvertaisLaukums1!='' && atvertaisLaukums2!='' ) //abi bloki ar atvērti
 	{
-		parbauditBlokus();
+		//parbauditBlokus();
 
 	}
 	else //neviens bloks nav atvērts
@@ -37,17 +36,19 @@ function atvertBloku(blokaNosaukums)
 
 
 
-		if( atvertsBloks1=='' ) //neviens bloks nav atvērts - atveram pirmo
+		if( atvertaisLaukums1=='' ) //neviens bloks nav atvērts - atveram pirmo
 		{
-			atvertsBloks1 = blokaNosaukums;
-			console.log('atvertsBloks1: '+atvertsBloks1);
-			document.querySelector('#'+blokaNosaukums+' div').style.display='block';
+			atvertaisLaukums1 = laukumaID;
+			console.log('atvertaisLaukums1: '+atvertaisLaukums1);
+			document.querySelector('#'+laukumaID+' div').style.display='block';
 		}
 		else //pirmais bloks ir atvērts atveram otro
 		{
-			atvertsBloks2 = blokaNosaukums;
-			console.log('atvertsBloks2: '+atvertsBloks2);
-			document.querySelector('#'+blokaNosaukums+' div').style.display='block';
+			atvertaisLaukums2 = laukumaID;
+			console.log('atvertaisLaukums2: '+atvertaisLaukums2);
+			document.querySelector('#'+laukumaID+' div').style.display='block';
+			
+			parbauditBlokus();
 		}
 
 	}
@@ -59,19 +60,54 @@ function atvertBloku(blokaNosaukums)
 
 function parbauditBlokus()
 {
-	for (let i = 0; i < bloki1.length; i++) {
-		//console.log( bloki1[i] );
+	//for (let i = 0; i < laukumuSaturs.length; i++) {
+	//	console.log( laukumuSaturs[i] );
+	//}
 
-		if( bloki1[i]==atvertsBloks1 )
+
+		//atvertaLaukuma1Nr = atvertaisLaukums1[1] + atvertaisLaukums1[2];
+		let Nr1 = atvertaisLaukums1.substr(1);
+		let Nr2 = atvertaisLaukums2.substr(1);
+		
+		
+		if ( laukumuSaturs[Nr1] == laukumuSaturs[Nr2] )
 		{
+			console.log('atvērti vienādi lauki');
 
+			vienadieAtvertieLaukumi.push(atvertaisLaukums1,atvertaisLaukums2)
+
+			atvertaisLaukums1='';
+			atvertaisLaukums2='';
 		}
-	} 
+		else
+		{
+			setTimeout(aizvertLaukumus, 3000);
+		}
 	
-	document.querySelector('#'+atvertsBloks1+' div').style.display='none';
-	document.querySelector('#'+atvertsBloks2+' div').style.display='none';
-	atvertsBloks1='';
-	atvertsBloks2='';
+
+	
+}
+
+
+function aizvertLaukumus()
+{
+	//alert(1);
+
+	//if( vienadieAtvertieLaukumi.includes[atvertaisLaukums1] )
+	//{
+		document.querySelector('#'+atvertaisLaukums1+' div').style.display='none';
+	//}
+
+	//if( vienadieAtvertieLaukumi.includes[atvertaisLaukums2] )
+	//{
+		document.querySelector('#'+atvertaisLaukums2+' div').style.display='none';
+	//}
+	
+	//document.querySelector('#'+atvertaisLaukums2+' div').style.display='none';
+
+	atvertaisLaukums1='';
+	atvertaisLaukums2='';
+
 }
 
 
